@@ -1,10 +1,17 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Transactions from "./pages/Transactions";
+import Insights from "./pages/Insights";
+
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Finance Dashboard
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/insights" element={<Insights />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

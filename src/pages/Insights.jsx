@@ -1,8 +1,14 @@
+import Layout from "../layout/Layout";
+
 function Insights() {
   return (
-    <div className="p-10 text-2xl">
-      Insights Page
-    </div>
+    <Layout>
+
+      <div className="text-2xl font-semibold">
+        Insights Page
+      </div>
+
+    </Layout>
   );
 }
 

@@ -1,8 +1,14 @@
+import Layout from "../layout/Layout";
+
 function Transactions() {
   return (
-    <div className="p-10 text-2xl">
-      Transactions Page
-    </div>
+    <Layout>
+
+      <div className="text-2xl font-semibold">
+        Transactions Page
+      </div>
+
+    </Layout>
   );
 }
 

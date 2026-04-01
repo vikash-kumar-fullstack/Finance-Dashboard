@@ -1,8 +1,14 @@
+import Layout from "../layout/Layout";
+
 function Dashboard() {
   return (
-    <div className="p-10 text-2xl">
-      Dashboard Page
-    </div>
+    <Layout>
+
+      <div className="text-2xl font-semibold">
+        Dashboard Overview
+      </div>
+
+    </Layout>
   );
 }
 
