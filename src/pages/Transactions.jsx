@@ -1,7 +1,8 @@
 import Layout from "../layout/Layout";
 import transactionsData from "../data/transactions";
 import TransactionTable from "../components/transactions/TransactionTable";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { RoleContext } from "../context/RoleContext";
 
 function Transactions() {
 
@@ -9,14 +10,16 @@ function Transactions() {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("date");
 
-let filteredTransactions = transactionsData.filter((t) => {
+  const { role } = useContext(RoleContext);
 
-  const matchesSearch =
-    t.description.toLowerCase().includes(search.toLowerCase()) ||
-    t.category.toLowerCase().includes(search.toLowerCase());
+  let filteredTransactions = transactionsData.filter((t) => {
 
-  const matchesFilter =
-    filter === "all" || t.type === filter;
+    const matchesSearch =
+      t.description.toLowerCase().includes(search.toLowerCase()) ||
+      t.category.toLowerCase().includes(search.toLowerCase());
+
+    const matchesFilter =
+      filter === "all" || t.type === filter;
 
     return matchesSearch && matchesFilter;
   });
@@ -41,11 +44,7 @@ let filteredTransactions = transactionsData.filter((t) => {
         Transactions
       </h2>
 
-      {/* Controls */}
-
       <div className="flex flex-col md:flex-row gap-4 mb-6">
-
-        {/* Search */}
 
         <input
           type="text"
@@ -54,8 +53,6 @@ let filteredTransactions = transactionsData.filter((t) => {
           onChange={(e) => setSearch(e.target.value)}
           className="border rounded-lg px-3 py-2 w-full md:w-64"
         />
-
-        {/* Filter */}
 
         <select
           value={filter}
@@ -67,8 +64,6 @@ let filteredTransactions = transactionsData.filter((t) => {
           <option value="expense">Expense</option>
         </select>
 
-        {/* Sort */}
-
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
@@ -79,6 +74,11 @@ let filteredTransactions = transactionsData.filter((t) => {
         </select>
 
       </div>
+      {role === "admin" && (
+        <button className="mb-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+          + Add Transaction
+        </button>
+      )}
 
       <TransactionTable transactions={filteredTransactions} />
 
