@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="w-64 h-screen bg-gray-900 text-white flex flex-col">
+    <div className="w-64 hidden md:flex flex-col bg-gray-900 text-white min-h-screen">
 
       <div className="text-2xl font-bold p-6 border-b border-gray-700">
         FinDash

@@ -3,7 +3,7 @@ import Topbar from "./Topbar";
 
 function Layout({ children }) {
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
 
       <Sidebar />
 
@@ -11,7 +11,7 @@ function Layout({ children }) {
 
         <Topbar />
 
-        <main className="p-6 bg-gray-100 min-h-screen">
+        <main className="p-6 bg-gray-100 flex-1">
           {children}
         </main>
 

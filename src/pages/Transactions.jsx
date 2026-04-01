@@ -1,7 +1,7 @@
 import Layout from "../layout/Layout";
-import transactionsData from "../data/transactions";
+import transactions from "../data/transactions";
 import TransactionTable from "../components/transactions/TransactionTable";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { RoleContext } from "../context/RoleContext";
 
 function Transactions() {
@@ -12,6 +12,21 @@ function Transactions() {
 
   const { role } = useContext(RoleContext);
 
+  // Load transactions from localStorage or default data
+  const [transactionsData, setTransactionsData] = useState(() => {
+    const stored = localStorage.getItem("transactions");
+    return stored ? JSON.parse(stored) : transactions;
+  });
+
+  // Persist transactions to localStorage
+  useEffect(() => {
+    localStorage.setItem(
+      "transactions",
+      JSON.stringify(transactionsData)
+    );
+  }, [transactionsData]);
+
+  // Filtering
   let filteredTransactions = transactionsData.filter((t) => {
 
     const matchesSearch =
@@ -24,6 +39,7 @@ function Transactions() {
     return matchesSearch && matchesFilter;
   });
 
+  // Sorting
   filteredTransactions = [...filteredTransactions].sort((a, b) => {
 
     if (sort === "date") {
@@ -44,6 +60,7 @@ function Transactions() {
         Transactions
       </h2>
 
+      {/* Controls */}
       <div className="flex flex-col md:flex-row gap-4 mb-6">
 
         <input
@@ -74,12 +91,15 @@ function Transactions() {
         </select>
 
       </div>
+
+      {/* Admin Only Button */}
       {role === "admin" && (
         <button className="mb-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
           + Add Transaction
         </button>
       )}
 
+      {/* Table */}
       <TransactionTable transactions={filteredTransactions} />
 
     </Layout>

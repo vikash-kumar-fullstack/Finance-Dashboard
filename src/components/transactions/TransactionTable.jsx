@@ -1,4 +1,16 @@
 function TransactionTable({ transactions }) {
+    if (!transactions || transactions.length === 0) {
+  return (
+    <div className="bg-white rounded-xl shadow p-6 text-center">
+      <h3 className="text-lg font-semibold mb-2">
+        No Transactions Found
+      </h3>
+      <p className="text-gray-500">
+        Try adjusting your search or filters.
+      </p>
+    </div>
+  );
+}
   return (
     <div className="bg-white rounded-xl shadow p-6">
 

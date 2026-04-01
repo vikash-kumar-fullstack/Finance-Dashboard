@@ -1,6 +1,6 @@
 function SummaryCards({ balance, income, expenses }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-3 gap-6 mb-6">
 
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-gray-500 text-sm">Total Balance</h3>
