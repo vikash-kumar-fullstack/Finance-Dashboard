@@ -3,25 +3,60 @@ import { Link } from "react-router-dom";
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   return (
-    <div
-      className={`fixed md:static z-50 bg-gray-900 text-white w-64 h-full
-      transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-      md:translate-x-0 transition-transform duration-200`}
-    >
+    <>
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
-      <div className="text-2xl font-bold p-6 border-b border-gray-700">
-        FinDash
-      </div>
+      <aside
+        className={`
+        fixed md:static
+        top-0 left-0
+        w-64 h-full
+        bg-gray-900 text-white
+        transform
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        md:translate-x-0
+        transition-transform duration-300
+        z-50
+        `}
+      >
 
-      <nav className="flex flex-col gap-2 p-4">
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-700">
+          <span className="text-2xl font-bold">FinDash</span>
 
-        <Link to="/" onClick={() => setSidebarOpen(false)}>Dashboard</Link>
-        <Link to="/transactions" onClick={() => setSidebarOpen(false)}>Transactions</Link>
-        <Link to="/insights" onClick={() => setSidebarOpen(false)}>Insights</Link>
+          <button
+            className="md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          >
+            ✕
+          </button>
+        </div>
 
-      </nav>
+        {/* Navigation */}
+        <nav className="flex flex-col gap-2 p-4">
 
-    </div>
+          <Link to="/" className="hover:bg-gray-700 p-2 rounded">
+            Dashboard
+          </Link>
+
+          <Link to="/transactions" className="hover:bg-gray-700 p-2 rounded">
+            Transactions
+          </Link>
+
+          <Link to="/insights" className="hover:bg-gray-700 p-2 rounded">
+            Insights
+          </Link>
+
+        </nav>
+
+      </aside>
+    </>
   );
 }
 

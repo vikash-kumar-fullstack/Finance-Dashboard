@@ -12,9 +12,10 @@ function Topbar({ setSidebarOpen }) {
 
       <div className="flex items-center gap-4">
 
+        {/* Hamburger */}
         <button
-          className="md:hidden text-xl"
           onClick={() => setSidebarOpen(true)}
+          className="md:hidden text-xl"
         >
           ☰
         </button>
@@ -25,21 +26,26 @@ function Topbar({ setSidebarOpen }) {
 
       </div>
 
-      <select
-        value={role}
-        onChange={(e) => setRole(e.target.value)}
-        className="border rounded-lg px-3 py-1"
-      >
-        <option value="viewer">Viewer</option>
-        <option value="admin">Admin</option>
-      </select>
-      
-      <button
-        onClick={toggleTheme}
-        className="border px-3 py-1 rounded-lg"
+      <div className="flex items-center gap-4">
+
+        {/* Role Switch */}
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="border rounded-lg px-3 py-1"
         >
-        🌙
+          <option value="viewer">Viewer</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button
+          onClick={toggleTheme}
+          className="border rounded-lg px-3 py-1"
+        >
+          🌙
         </button>
+
+      </div>
 
     </div>
   );

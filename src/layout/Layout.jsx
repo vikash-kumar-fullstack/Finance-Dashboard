@@ -3,19 +3,21 @@ import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
 function Layout({ children }) {
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gray-100">
 
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex flex-col flex-1">
 
         <Topbar setSidebarOpen={setSidebarOpen} />
 
-        <main className="p-6 bg-gray-100 min-h-screen">
+        <main className="p-6">
           {children}
         </main>
 
