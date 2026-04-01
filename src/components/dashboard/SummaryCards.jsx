@@ -21,4 +21,5 @@ function SummaryCards({ balance, income, expenses }) {
   );
 }
 
+
 export default SummaryCards;
