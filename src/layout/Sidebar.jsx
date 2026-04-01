@@ -8,7 +8,7 @@ function Sidebar() {
         FinDash
       </div>
 
-      <nav className="flex flex-col gap-2 p-4">
+      <nav className="flex flex-col gap-4 p-4">
 
         <Link
           to="/"
