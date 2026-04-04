@@ -1,60 +1,69 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { LayoutDashboard, CreditCard, Lightbulb, X, Activity } from "lucide-react";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
+  const location = useLocation();
+
+  const getLinkClasses = (path) => {
+    const isActive = location.pathname === path;
+    return `flex items-center px-4 py-3 mb-2 rounded-xl transition-all duration-300 font-medium ${
+      isActive
+        ? "bg-indigo-600/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300 ring-1 ring-indigo-600/20"
+        : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/50"
+    }`;
+  };
 
   return (
     <>
-      {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/30 md:hidden"
+          className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm md:hidden z-40 transition-opacity"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       <aside
         className={`
-        fixed md:static
-        top-0 left-0
-        w-64 h-full
-        bg-gray-900 text-white
-        transform
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0
-        transition-transform duration-300
-        z-50
+          fixed top-0 left-0 h-full w-64 z-50
+          transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 md:p-4 bg-transparent
         `}
       >
+        <div className="h-full bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl md:rounded-3xl border-r md:border border-slate-200/50 dark:border-slate-800/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none flex flex-col">
+          
+          <div className="flex items-center justify-between p-6 mb-2">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-linear-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                <Activity size={20} strokeWidth={2.5} />
+              </div>
+              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                FinDash
+              </span>
+            </div>
+            <button
+              className="md:hidden p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              onClick={() => setSidebarOpen(false)}
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-700">
-          <span className="text-2xl font-bold">FinDash</span>
-
-          <button
-            className="md:hidden"
-            onClick={() => setSidebarOpen(false)}
-          >
-            ✕
-          </button>
+          <nav className="flex-1 px-4 overflow-y-auto">
+            <Link to="/" className={getLinkClasses("/")} onClick={() => setSidebarOpen(false)}>
+              <LayoutDashboard size={20} className="mr-3 opacity-80" />
+              Dashboard
+            </Link>
+            <Link to="/transactions" className={getLinkClasses("/transactions")} onClick={() => setSidebarOpen(false)}>
+              <CreditCard size={20} className="mr-3 opacity-80" />
+              Transactions
+            </Link>
+            <Link to="/insights" className={getLinkClasses("/insights")} onClick={() => setSidebarOpen(false)}>
+              <Lightbulb size={20} className="mr-3 opacity-80" />
+              Insights
+            </Link>
+          </nav>
         </div>
-
-        {/* Navigation */}
-        <nav className="flex flex-col gap-2 p-4">
-
-          <Link to="/" className="hover:bg-gray-700 p-2 rounded">
-            Dashboard
-          </Link>
-
-          <Link to="/transactions" className="hover:bg-gray-700 p-2 rounded">
-            Transactions
-          </Link>
-
-          <Link to="/insights" className="hover:bg-gray-700 p-2 rounded">
-            Insights
-          </Link>
-
-        </nav>
-
       </aside>
     </>
   );

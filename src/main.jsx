@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App";
 import "./index.css";
-import { ThemeProvider } from "./context/ThemeContext";
 import { RoleProvider } from "./context/RoleContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-  <ThemeProvider>
-    <RoleProvider>
-      <App />
-    </RoleProvider>
-  </ThemeProvider>
+    <ThemeProvider>
+      <RoleProvider>
+        <App />
+      </RoleProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

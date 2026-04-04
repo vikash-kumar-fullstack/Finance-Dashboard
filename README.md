@@ -1,16 +1,42 @@
-# React + Vite
+# Personal Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive personal finance tracking application built with React. This project provides a clear visual overview of income, expenses, and current balances to help users track their financial health. 
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Dashboard Overview: Displays high-level summaries of current balance, total income, and total expenses.
+* Data Visualization: Uses custom area and donut charts to show balance trends over time and spending breakdowns by category.
+* Automated Insights: Calculates the highest spending categories and provides simple cash flow observations.
+* Responsive Layout: Built with a mobile-first approach, featuring a collapsible sidebar and scalable chart containers.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React (Vite)
+* Tailwind CSS
+* Recharts (for data visualization)
 
-## Expanding the ESLint configuration
+## Running the Project Locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To run this project on your local machine, follow these steps:
+
+1. Clone the repository:
+   git clone https://github.com/vikash-kumar-fullstack/Finance-Dashboard.git
+
+2. Navigate into the project directory:
+   cd Finance-Dashboard
+
+3. Install the dependencies:
+   npm install
+
+4. Start the development server:
+   npm run dev
+
+5. Open your browser and visit http://localhost:5173 to view the application.
+
+## Project Structure
+
+* /src/components - Reusable UI components including charts and layout elements.
+* /src/pages - Main application views (Dashboard, Insights, etc.).
+* /src/layout - Structural layout components like the Sidebar and Topbar.
+* /src/utils - Helper functions for calculating chart data and formatting numbers.
+* /src/data - Local mock data used to simulate a backend response.
