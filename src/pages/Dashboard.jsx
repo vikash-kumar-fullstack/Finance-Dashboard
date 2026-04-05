@@ -13,13 +13,13 @@ function Dashboard() {
 
   return (
     <Layout>
-      <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
               Dashboard Overview
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium">
+            <p className="text-slate-500 dark:text-slate-400 mt-1 text-sm sm:text-base font-medium">
               Your financial summary at a glance.
             </p>
           </div>
@@ -31,11 +31,11 @@ function Dashboard() {
           expenses={expenses}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="lg:col-span-2 w-full">
             <BalanceChart data={balanceData} />
           </div>
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 w-full">
             <CategoryChart data={categoryData} />
           </div>
         </div>
